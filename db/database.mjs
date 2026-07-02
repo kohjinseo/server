@@ -9,3 +9,13 @@ export async function connectDB() {
     })
     
 }
+
+// user 컬렉션 객체 
+export function getUsers() {
+    return db.collection("users")
+
+}
+
+export function getPosts() {
+    return db.collection("posts")
+}
