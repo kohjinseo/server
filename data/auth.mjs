@@ -15,3 +15,7 @@ export async function createUser(user) {
 function mapOptionalUser(user) {
     return user ? { ...user, id: user._id.toString() } : user
 }
+
+export async function findById(id) {
+    return getUsers().find({ _id: new ObjectId(id) }).next().then(mapOptionalUser)
+}
