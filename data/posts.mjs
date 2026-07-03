@@ -1,4 +1,4 @@
-import MongoDB, { ObjectId } from "mongodb"
+import MongoDB, { ObjectId, ReturnDocument } from "mongodb"
 import * as UserRepositroy from "./auth.mjs"
 import { getPosts } from "../db/database.mjs"
 
@@ -35,7 +35,14 @@ function mapOptionalPost(post){
 }
 
 // 포스트 수정
+export async function update(id, text){
+    return getPosts().findOneAndUpdate(
+        { _id: new ObjectId(id)}, 
+        { $set: {text}},
+        { returnDocument: "after"}
+    ).then((result) => result)
 
+}
 
 // 포스트 삭제
 export async function remove(id) {
