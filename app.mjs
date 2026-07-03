@@ -9,6 +9,7 @@ const app = express()
 app.use(express.json())
 app.use("/auth", authRouter)
 app.use("/post", postsRouter)
+
 app.use((req, res) => {
     console.log("123")
     res.sendStatus(404)
